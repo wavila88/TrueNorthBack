@@ -15,7 +15,7 @@ const createDataBase = async () =>{
     {type: 'division', cost:7},
     {type: 'square_root', cost:9},
     {type: 'random_string', cost:10},
-    {type: 'initial_value', cost:50},
+    {type: 'initial_value', cost:200},
   
   ];
 

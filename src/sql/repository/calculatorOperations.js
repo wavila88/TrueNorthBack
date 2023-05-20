@@ -1,48 +1,6 @@
-const { additionBs, substractionBs, multiplicationBs, divisionBs, squareRootBs } = require("../../bussiness/calculatorBs");
-const { OPERATIONS, OPERATION_RESPONSE, createOperationResponse } = require("../../utils/operation");
-const Operations = require("../models/OperationModel")
-const Records = require("../models/RecordModel")
-
-
-
-
-const additionRepo = async (userId, numbers) => {
-  const {initialCostValue,amount,newBalance, operationId} = await commonOperations(OPERATIONS.addition,userId);
-  const result =additionBs( numbers[0],numbers[1]);
-  return await validateAction(operationId,userId,amount, newBalance ,
-    createOperationResponse(initialCostValue ,amount,newBalance,result));
-};
-
-const substractRepo = async (userId, numbers) => {
-  const {initialCostValue,amount,newBalance, operationId} = await commonOperations(OPERATIONS.subtraction,userId);
-  const result =substractionBs( numbers[0],numbers[1]);
-  return await validateAction(operationId,userId,amount, newBalance ,
-    createOperationResponse(initialCostValue ,amount,newBalance,result));
-};
-
-const multiplyRepo = async (userId, numbers) => {
-  const {initialCostValue,amount,newBalance, operationId} = await commonOperations(OPERATIONS.multiplication,userId);
-  const result =multiplicationBs( numbers[0],numbers[1]);
-  return await validateAction(operationId,userId,amount, newBalance ,
-    createOperationResponse(initialCostValue ,amount,newBalance,result));
-};
-
-const divideRepo = async (userId, numbers) => {
-  const {initialCostValue,amount,newBalance, operationId} = await commonOperations(OPERATIONS.division,userId);
-  const result =divisionBs( numbers[0],numbers[1]);
-  return await validateAction(operationId,userId,amount, newBalance ,
-    createOperationResponse(initialCostValue ,amount,newBalance,result));
-};
-
-const squareRootRepo = async (userId, numbers) => {
-  const {initialCostValue,amount,newBalance, operationId} = await commonOperations(OPERATIONS.square_root,userId);
-  const result =squareRootBs(numbers[0]);
-  return await validateAction(operationId,userId,amount, newBalance ,
-    createOperationResponse(initialCostValue ,amount,newBalance,result));
-};
-
-
-
+const { OPERATIONS} = require("../../utils/operation");
+const Operations = require("../models/OperationModel");
+const Records = require("../models/RecordModel");
 
 
 /**
@@ -110,20 +68,6 @@ const getInitialCost = async () => {
     return obj.cost;
 }
 
-/**
- *  if the balance is ok make the action if not the request is denied
- * */ 
-const validateAction = async (operationId,userId,amount, newBalance, operationResponse) => {
-  if(newBalance > -1){
-    const record =await createRecords(operationId,userId,amount, newBalance, operationResponse);
-    return {
-      newbalance: record.user_balance,
-      operationResponse
-    }
-  } else {
-    return false;
-  }
-}
 
 const createRecords = async (operationId,userId,amount, newBalance, operationResponse) => {
  return await Records.create({
@@ -135,13 +79,7 @@ const createRecords = async (operationId,userId,amount, newBalance, operationRes
    })
   }
 
-
-
-
 module.exports ={
-  additionRepo,
-  substractRepo,
-  multiplyRepo,
-  divideRepo,
-  squareRootRepo
+  commonOperations,
+  createRecords
 }
