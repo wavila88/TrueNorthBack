@@ -1,8 +1,7 @@
 const express = require('express');
 const response = require('../network/response');
-const { loginRepo } = require('../sql/repository/loginRepo');
 const { additionController, substractController, multiplyController, divideController, squareRootController, randomNumberController } = require('../controller/calculatorController');
-const { callLambdaService } = require('../services/calculatorService');
+const { validateToken } = require('../controller/securityController');
 
 // const Store = require('../store/redis');
 
@@ -11,27 +10,13 @@ const router = express.Router();
 
 
 //Routes
-router.post('/login', login);
-router.post('/add', addition);
-router.post('/sub', subtraction);
-router.post('/mul', multiplication);
-router.post('/div', division);
-router.post('/sq', squareRoot);
-router.post('/ran', random);
+router.post('/add', validateToken, addition);
+router.post('/sub', validateToken, subtraction);
+router.post('/mul', validateToken, multiplication);
+router.post('/div', validateToken, division);
+router.post('/sq', validateToken, squareRoot);
+router.post('/ran', validateToken, random);
 
-
-async function login(req, res) {
-  const userName = req.body.userName;
-  const password = req.body.password;
-  console.log(`init params ${JSON.stringify(req.body)}`);
-  const user = await loginRepo({ userName, password });
-  if (user !== null) {
-    response.success(req, res, user, 200);
-
-  } else {
-    response.error(req, res, 'not user found', 404);
-  }
-}
 
 async function addition(req, res) {
   await commonOperations(req, res, additionController);
