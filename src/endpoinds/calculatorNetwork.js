@@ -15,7 +15,7 @@ router.post('/sub', subtraction);
 router.post('/mul', multiplication);
 router.post('/div', division);
 router.post('/sq', squareRoot);
-// router.post('/randomString', randomString);
+router.post('/ran', random);
 
 
 async function login(req, res) {
@@ -58,6 +58,12 @@ async function division(req,res){
 
 async function squareRoot(req,res){
   const { userId, numbers } = req.body;
+  const newBalance =await squareRootRepo(userId, numbers);
+  operationResponse(req, res, newBalance);
+};
+
+async function randomString(req,res){
+  const { userId } = req.body;
   const newBalance =await squareRootRepo(userId, numbers);
   operationResponse(req, res, newBalance);
 };
