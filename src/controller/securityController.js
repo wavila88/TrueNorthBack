@@ -54,5 +54,6 @@ const validateToken = async (req, res, next) => {
 
 module.exports = {
   loginController,
-  validateToken
+  validateToken,
+  createToken
 }

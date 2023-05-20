@@ -20,8 +20,6 @@ const commonOperations = async (operationType, userId) => {
   }
 }
 
-
-
 const getOperationCost = async (operationType) => {
   const operation = await Operations.findOne({where:{type: operationType}});
   return {
@@ -81,5 +79,7 @@ const createRecords = async (operationId,userId,amount, newBalance, operationRes
 
 module.exports ={
   commonOperations,
-  createRecords
+  createRecords,
+  getInitialCostValue,
+  getOperationCost
 }
