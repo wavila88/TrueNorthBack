@@ -1,12 +1,12 @@
 const express = require('express');
 const { loginRepo } = require('../sql/repository/securityRepo');
 const response = require('../network/response');
-const { loginController } = require('../controller/securityController');
+const { loginController, validateToken, logoutController } = require('../controller/securityController');
 
 const router = express.Router();
 
 router.post('/login', login);
-router.post('/singOut', singOut);
+router.post('/logout', validateToken,logout);
 
 
 async function login(req, res) {
@@ -19,6 +19,12 @@ async function login(req, res) {
   }
 }
 
-async function singOut(){}
+async function logout(req,res){
+  try{
+    await logoutController(req,res);
+  }catch(error){
+    response.error(req, res, `Error ${error.message}`)
+  }
+}
 
 module.exports = router;

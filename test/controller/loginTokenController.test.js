@@ -85,19 +85,6 @@ describe('validateToken', () => {
     console.log('after each test')
   });
 
-  it('should call next if token is valid', async () => {
-    const token = 'validToken';
-    const decoded = { userId: 123 };
-
-    req.headers['authorization'] = `Bearer ${token}`;
-
-    // Mock the jwt.verify function to resolve with the decoded token
-    jwt.verify.mockImplementation((token, secretKey, callback) => {
-      callback(null, decoded);
-    });
-
-  });
-
   it('should send an error response if token is missing', async () => {
     await security.validateToken(req, res, next);
 
