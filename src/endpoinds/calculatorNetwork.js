@@ -40,6 +40,9 @@ async function squareRoot(req, res) {
 async function random(req, res) {
   try {
     const { userId } = req.body;
+    if(!userId){
+      return response.error(req, res, {response:'userId is required'},400 );
+    }
     const newBalance = await randomNumberController(userId);
     operationResponse(req, res, newBalance);
   } catch (error) {
@@ -51,6 +54,9 @@ async function random(req, res) {
 async function commonOperations(req, res, callBack) {
   try {
     const { userId, numbers } = req.body;
+    if(!userId || !numbers){
+      return response.error(req, res, {response:'userId and numbers are required'},400 );
+    }
     const newBalance = await callBack(userId, numbers);
     operationResponse(req, res, newBalance);
   } catch (error) {

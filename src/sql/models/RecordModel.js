@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../../sql/connect');
+const Operations = require('./OperationModel');
 // import Rol from './RolModel';
 
 const Records = sequelize.define('Records', {
@@ -32,11 +33,16 @@ const Records = sequelize.define('Records', {
     type: DataTypes.STRING,
     allowNull: false,
     length: 50
+  },
+  record_deleted: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
   }
 }, {
   freezeTableName: true
 });
-
+//define asociation
+Records.belongsTo(Operations, { foreignKey: 'operation_id', as: 'operation' });
 
 // `sequelize.define` also returns the model
 console.log(Records === sequelize.models.Records); // true

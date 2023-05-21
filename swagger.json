@@ -1,0 +1,467 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Arithmetic Calculator REST API",
+    "description": "API for performing certain mathematical operations, this a TRUENORTH Code Challenge",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001"
+    }
+  ],
+  "tags": [
+    {
+      "name": "operations",
+      "description": "Manage all operations"
+    },
+    {
+      "name": "records",
+      "description": "Manage all records"
+    }
+  ],
+  "paths": {
+    "/add": {
+      "post": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Perform addition",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "number"
+                  },
+                  "numbers": {
+                    "type": "object"
+                  }
+                },
+                "example": {
+                  "userId": 1,
+                  "numbers": [
+                    10,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful addition",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sub": {
+      "post": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Perform subtraction",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "number"
+                  },
+                  "numbers": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "userId": 1,
+                  "numbers": [
+                    10,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful subtraction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mul": {
+      "post": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Perform multiplication",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "number"
+                  },
+                  "numbers": {
+                    "type": "object"
+                  }
+                },
+                "example": {
+                  "userId": 1,
+                  "numbers": [
+                    10,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful multiplication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/div": {
+      "post": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Perform division",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "number"
+                  },
+                  "numbers": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "userId": 1,
+                  "numbers": [
+                    10,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful division",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sq": {
+      "post": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Calculate square root",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "number"
+                  },
+                  "numbers": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "userId": 1,
+                  "numbers": [
+                    10
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful calculation of square root",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ran": {
+      "post": {
+        "tags": [
+          "operations"
+        ],
+        "summary": "Generate a random number",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "userId": 1
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful generation of random number",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/records": {
+      "post": {
+        "tags": [
+          "records"
+        ],
+        "summary": "Get records using pagination and sort",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pageSize": {
+                    "type": "number"
+                  },
+                  "pageNumber": {
+                    "type": "number"
+                  },
+                  "order": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "pageSize": 15,
+                  "pageNumber": 1,
+                  "order": "DESC"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful getting registers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number"
+                    },
+                    "body": {
+                      "type": "object"
+                    }
+                  },
+                  "example": {
+                    "status": 200,
+                    "body": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/records/{id}": {
+      "delete": {
+        "tags": [
+          "records"
+        ],
+        "summary": "remove one record",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the record to remove",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful getting registers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number"
+                    },
+                    "body": {
+                      "type": "object"
+                    }
+                  },
+                  "example": {
+                    "status": 200,
+                    "body": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

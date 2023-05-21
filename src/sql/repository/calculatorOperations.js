@@ -1,11 +1,12 @@
 const { OPERATIONS} = require("../../utils/operation");
 const Operations = require("../models/OperationModel");
 const Records = require("../models/RecordModel");
+const { validateRecords } = require("./recordsRepo");
 
 
 /**
  * 
- *@returns common values used by differen operations
+ *@returns common values required by all operations
  */
 const commonOperations = async (operationType, userId) => {
   const initialCostValue =await getInitialCostValue( userId);
@@ -41,18 +42,6 @@ const getInitialCostValue = async (user_id) => {
 
 /**
  * 
- * gets the last record of user.
- * @returns 
- */
-const validateRecords = async ( userId) => 
-await Records.findOne({
-  where: { user_id: userId },
-  order: [['createdAt', 'DESC']],
-});
-
-
-/**
- * 
  * @returns the initial cost if user doesn´t have records
  */
 const getInitialCost = async () => {
@@ -73,7 +62,8 @@ const createRecords = async (operationId,userId,amount, newBalance, operationRes
     user_id: userId,
     amount: amount,
     user_balance: newBalance,
-    operation_response: operationResponse
+    operation_response: operationResponse,
+    record_deleted: false,
    })
   }
 

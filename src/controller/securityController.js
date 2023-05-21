@@ -24,7 +24,7 @@ const createToken = (user) => {
 
   return {
     user: payload,
-    token: jwt.sign(payload, config.security.secretKey, { expiresIn: '3m' })
+    token: jwt.sign(payload, config.security.secretKey, { expiresIn: config.security.sessionTime })
   }
 }
 /**

@@ -7,7 +7,8 @@ const config = {
     database: process.env.SQL_DATABASE || 'sql9619488',
   },
   security: {
-    secretKey: process.env.SECRET_KEY || '9O8I7U6Y%'
+    secretKey: process.env.SECRET_KEY || '9O8I7U6Y%',
+    sessionTime : process.env.SESSION_TIME || '3m'
   },
   lambdaEndpoint: process.env.LAMBDA_URL || 'https://6xd9p9kpti.execute-api.us-east-1.amazonaws.com/default/callRandomNumber'
 

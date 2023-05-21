@@ -4,7 +4,6 @@ exports.success = (req, res, message, status) =>{
   let statusMessage = message || '';
 
   res.status(status).send({
-    error: false,
     status: statusCode,
     body: statusMessage
   });
@@ -16,8 +15,7 @@ exports.error = (req, res, message, status) =>{
   let statusMessage = message || 'internal server error';
 
   res.status(status).send({
-    error: false,
     status: statusCode,
-    body: message
+    body: statusMessage
   });
 }
