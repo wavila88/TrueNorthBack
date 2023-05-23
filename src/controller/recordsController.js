@@ -1,7 +1,9 @@
-const { getRecordsWithPaginationRepo, deleteRecordsRepo } = require("../sql/repository/recordsRepo")
+const { getRecordsWithPaginationRepo, deleteRecordsRepo, countRecordsRepo } = require("../sql/repository/recordsRepo")
 
-const getRecordsPaginationController = async (pageNumber, pageSize,order) => {
-  return await getRecordsWithPaginationRepo(pageNumber, pageSize, order);
+const getRecordsPaginationController = async (pageNumber, pageSize,order, id) => {
+ const records = await getRecordsWithPaginationRepo(pageNumber, pageSize, order, id);
+ const recordsCount = await countRecordsRepo(id);
+ return {records, recordsCount};
 }
 
 const deleteRecordsController = async (id) => {

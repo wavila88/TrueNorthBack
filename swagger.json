@@ -369,12 +369,16 @@
                   },
                   "order": {
                     "type": "string"
+                  },
+                  "id": {
+                    "type": "number"
                   }
                 },
                 "example": {
                   "pageSize": 15,
                   "pageNumber": 1,
-                  "order": "DESC"
+                  "order": "DESC",
+                  "id": 1
                 }
               }
             }

@@ -7,6 +7,7 @@ const createDataBase = async () => {
   const UsersArray = [
     { userName: 'user1', password: 'password1', status: 'active' },
     { userName: 'user2', password: 'password2', status: 'active' },
+    { userName: 'josep@gmail.com', password: 'password3', status: 'active' },
   ];
   const operationsArray = [
     { type: 'addition', cost: 2 },

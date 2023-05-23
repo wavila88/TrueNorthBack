@@ -11,12 +11,12 @@ recordsRouter.delete('/:id', validateToken,deleteRecords);
 
 
 async function getRecords(req, res) {
-  const {pageNumber, pageSize, order} = req.body;
+  const {pageNumber, pageSize, order, id} = req.body;
   try{
-    if(!pageNumber || !pageSize || !order){
+    if(!pageNumber || !pageSize || !order ||!id){
       return response.error(req, res, {response:'pageNumber and pageSize are required'},400 );
     }
-    const records = await getRecordsPaginationController(pageNumber,pageSize, order)
+    const records = await getRecordsPaginationController(pageNumber,pageSize, order, id)
     response.success(req,res,records,200);
   } catch(error){
     response.error(req, res, `Getting records error ${error.message}`, 500)
