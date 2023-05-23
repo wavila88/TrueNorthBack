@@ -65,11 +65,16 @@ const createRecords = async (operationId,userId,amount, newBalance, operationRes
     operation_response: operationResponse,
     record_deleted: false,
    })
-  }
+  };
+
+const getOperationsRepo = async () => {
+  return await Operations.findAll();
+}
 
 module.exports ={
   commonOperations,
   createRecords,
   getInitialCostValue,
-  getOperationCost
+  getOperationCost,
+  getOperationsRepo
 }

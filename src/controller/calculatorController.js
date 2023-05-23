@@ -1,5 +1,5 @@
 const { callLambdaService } = require("../services/calculatorService");
-const { commonOperations, createRecords } = require("../sql/repository/calculatorOperations");
+const { commonOperations, createRecords, getOperationsRepo, getInitialCostValue } = require("../sql/repository/calculatorOperations");
 const { OPERATIONS, addition, substraction, multiplication, division, squareRoot, createOperationResponse } = require("../utils/operation");
 
 
@@ -21,6 +21,15 @@ await commonOperationsController(userId, OPERATIONS.square_root, squareRoot, num
 
 const randomNumberController = async (userId, numbers) => 
 await commonOperationsController(userId, OPERATIONS.random_string, callLambdaService, numbers);
+
+const getOperationBalanceController = async(id) => {
+  const operations =await getOperationsRepo();
+  const balance = await getInitialCostValue(id);
+  return {
+    operations,
+    balance
+  }
+}
 
 
 
@@ -71,5 +80,6 @@ module.exports = {
   multiplyController,
   divideController,
   squareRootController,
-  randomNumberController
+  randomNumberController,
+  getOperationBalanceController
 }
