@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/login', login);
 router.post('/logout', validateToken,logout);
+router.get('/healtcheck',healtCheck);
 
 
 async function login(req, res) {
@@ -25,6 +26,10 @@ async function logout(req,res){
   }catch(error){
     response.error(req, res, `Error ${error.message}`)
   }
+}
+
+async function healtCheck(req, res){
+  response.success(req,res,{response: 'success healtcheck'},200);
 }
 
 module.exports = router;

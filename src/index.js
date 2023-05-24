@@ -12,7 +12,7 @@ const app = express()
 app.use(bodyParser.json());
 app.use(cors());
 
-const swaggerDoc = require('../swagger.json');
+const swaggerDoc = require('./swagger.json');
 
 
 app.use('/', calculatorRouter);

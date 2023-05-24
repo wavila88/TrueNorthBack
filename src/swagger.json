@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3001"
+      "url": "http://CdkIn-MyFar-KORB3ZUWPR09-1788869907.us-east-1.elb.amazonaws.com"
     }
   ],
   "tags": [

@@ -91,7 +91,6 @@ describe('validateToken', () => {
     expect(next).not.toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(401);
     expect(res.send).toHaveBeenCalledWith({
-      error: false,
       status: 401,
       body:  {"response": "No Token"},
     } );
